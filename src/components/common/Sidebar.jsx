@@ -18,7 +18,8 @@ import {
   Lock,
   X,
   Sparkles,
-  RotateCcw
+  RotateCcw,
+  Download
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useApp } from '../../context/AppContext';
@@ -292,8 +293,29 @@ export const Sidebar = ({ currentView, setCurrentView, mobileNavOpen, setMobileN
         )}
       </div>
 
-      {/* Logout button at bottom */}
-      <div className="p-3 border-t border-slate-200 bg-white">
+      {/* Bottom Actions: Install Web App & Logout */}
+      <div className="p-3 border-t border-slate-200 bg-white space-y-1.5">
+        <button
+          onClick={() => {
+            if (window.__pwaInstallPrompt) {
+              window.__pwaInstallPrompt.prompt();
+            } else {
+              alert('To install ASAN BILL:\n• Android/Chrome: Tap (⋮) → "Install app" or "Add to Home screen"\n• iPhone/Safari: Tap Share (⎋) → "Add to Home Screen"\n• Desktop Chrome/Edge: Click the Install icon in the address bar (⊕)');
+            }
+            if (isMobile) setMobileNavOpen(false);
+          }}
+          className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-blue-700 bg-blue-50/80 hover:bg-blue-100 rounded-lg transition-colors border border-blue-100"
+          title="Install ASAN BILL on device"
+        >
+          <div className="flex items-center gap-2.5">
+            <Download className="w-4 h-4 text-blue-600" />
+            <span>Install Web App</span>
+          </div>
+          <span className="text-[10px] px-1.5 py-0.5 bg-blue-200 text-blue-800 rounded font-bold uppercase">
+            PWA
+          </span>
+        </button>
+
         <button
           onClick={() => {
             logout();

@@ -4,6 +4,7 @@ import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/common/Navbar';
 import { Sidebar } from './components/common/Sidebar';
 import { MobileBottomNav } from './components/common/MobileBottomNav';
+import { PwaInstallPrompt } from './components/common/PwaInstallPrompt';
 import { Toast } from './components/common/Toast';
 
 // Landing & Auth
@@ -82,6 +83,7 @@ const MainContent = () => {
           setMobileNavOpen={setMobileNavOpen}
         />
         <LandingPage setCurrentView={setCurrentView} />
+        <PwaInstallPrompt />
         <Toast />
       </div>
     );
@@ -97,6 +99,7 @@ const MainContent = () => {
           setMobileNavOpen={setMobileNavOpen}
         />
         <LoginPage setCurrentView={setCurrentView} />
+        <PwaInstallPrompt />
         <Toast />
       </div>
     );
@@ -206,6 +209,9 @@ const MainContent = () => {
           onClose={() => setSelectedInvoiceForPreview(null)}
         />
       )}
+
+      {/* PWA Offline & Install Support */}
+      <PwaInstallPrompt />
 
       {/* Toast Notification Container */}
       <Toast />

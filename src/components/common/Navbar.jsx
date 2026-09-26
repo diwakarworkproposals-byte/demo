@@ -11,7 +11,8 @@ import {
   AlertTriangle,
   RotateCcw,
   Menu,
-  X
+  X,
+  Download
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useApp } from '../../context/AppContext';
@@ -121,6 +122,22 @@ export const Navbar = ({ currentView, setCurrentView, mobileNavOpen, setMobileNa
 
           {/* Right Action & Demo Switcher (Desktop) */}
           <div className="hidden lg:flex items-center gap-3">
+            {/* Install Web App Button */}
+            <button
+              onClick={() => {
+                if (window.__pwaInstallPrompt) {
+                  window.__pwaInstallPrompt.prompt();
+                } else {
+                  alert('To install ASAN BILL:\n• Android/Chrome: Tap (⋮) → "Install app" or "Add to Home screen"\n• iPhone/Safari: Tap Share (⎋) → "Add to Home Screen"\n• Desktop Chrome/Edge: Click the Install icon in the address bar (⊕)');
+                }
+              }}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors border border-blue-200"
+              title="Install ASAN BILL Progressive Web App"
+            >
+              <Download className="w-3.5 h-3.5 text-blue-600" />
+              <span>Install App</span>
+            </button>
+
             {/* Quick Demo Profile Switcher */}
             <div className="relative">
               <button
