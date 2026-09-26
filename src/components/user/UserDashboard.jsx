@@ -42,7 +42,7 @@ export const UserDashboard = ({ setCurrentView, setSelectedInvoiceForPreview }) 
   const totalInvoices = invoices.length;
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-3.5 sm:p-6 max-w-7xl mx-auto space-y-5 sm:space-y-6">
       {/* Account Expiry Alert Banner if Expired */}
       {isExpired && (
         <div className="bg-rose-50 border-2 border-rose-400 rounded-2xl p-5 mat-shadow-sm animate-in fade-in">
@@ -92,7 +92,7 @@ export const UserDashboard = ({ setCurrentView, setSelectedInvoiceForPreview }) 
         </div>
 
         {/* Quick Action Buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             onClick={() => setCurrentView('user-purchases')}
             className="flex items-center gap-1.5 px-3.5 py-2.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl shadow-xs transition-colors"

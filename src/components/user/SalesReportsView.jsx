@@ -78,7 +78,7 @@ export const SalesReportsView = () => {
   const topCustomers = Object.values(customerSalesMap).sort((a, b) => b.totalPurchased - a.totalPurchased);
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-3.5 sm:p-6 max-w-7xl mx-auto space-y-5 sm:space-y-6">
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">

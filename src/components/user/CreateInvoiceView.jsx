@@ -348,7 +348,7 @@ export const CreateInvoiceView = ({ setCurrentView, setSelectedInvoiceForPreview
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-3.5 sm:p-6 max-w-7xl mx-auto space-y-5 sm:space-y-6">
       {/* Expiry Warning if expired */}
       {isExpired && (
         <div className="bg-rose-50 border-2 border-rose-300 rounded-2xl p-4 text-rose-800 text-sm flex items-center gap-3">
@@ -371,11 +371,11 @@ export const CreateInvoiceView = ({ setCurrentView, setSelectedInvoiceForPreview
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             type="button"
             onClick={handleOpenPreview}
-            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold shadow-xs transition-colors"
+            className="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-bold shadow-xs transition-colors"
           >
             <Eye className="w-4 h-4 text-slate-500" />
             <span>Preview Invoice</span>
@@ -385,7 +385,7 @@ export const CreateInvoiceView = ({ setCurrentView, setSelectedInvoiceForPreview
             type="button"
             disabled={isExpired || Object.keys(stockErrors).length > 0}
             onClick={handleGenerateInvoice}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all ${
+            className={`flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all ${
               isExpired || Object.keys(stockErrors).length > 0
                 ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
                 : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20 hover:shadow'
@@ -398,7 +398,7 @@ export const CreateInvoiceView = ({ setCurrentView, setSelectedInvoiceForPreview
       </div>
 
       {/* SECTION 1: CUSTOMER & INVOICE DETAILS */}
-      <div className="bg-white rounded-2xl border border-slate-200 mat-shadow-sm p-6 space-y-6">
+      <div className="bg-white rounded-2xl border border-slate-200 mat-shadow-sm p-4 sm:p-6 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Customer Selection */}
           <div className="md:col-span-2 space-y-3">

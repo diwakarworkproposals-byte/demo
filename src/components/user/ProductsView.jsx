@@ -110,7 +110,7 @@ export const ProductsView = ({ setCurrentView }) => {
   const formExpectedProfit = formSalesValue - formPurchaseValue;
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-3.5 sm:p-6 max-w-7xl mx-auto space-y-5 sm:space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -123,16 +123,16 @@ export const ProductsView = ({ setCurrentView }) => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             onClick={() => setCurrentView('user-purchases')}
-            className="px-3.5 py-2.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl shadow-xs transition-colors"
+            className="px-3.5 py-2 sm:py-2.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl shadow-xs transition-colors"
           >
             Record Inward Purchase
           </button>
           <button
             onClick={openAddModal}
-            className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm hover:shadow transition-all"
+            className="flex items-center gap-2 px-4 py-2 sm:py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm hover:shadow transition-all"
           >
             <Plus className="w-4 h-4" />
             <span>+ Add Product</span>
@@ -201,7 +201,7 @@ export const ProductsView = ({ setCurrentView }) => {
 
       {/* Low Stock Warning Alert if any */}
       {lowStockProducts.length > 0 && (
-        <div className="bg-amber-50 border border-amber-300 rounded-2xl p-4 flex items-center justify-between gap-3">
+        <div className="bg-amber-50 border border-amber-300 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
             <div>
@@ -215,7 +215,7 @@ export const ProductsView = ({ setCurrentView }) => {
           </div>
           <button
             onClick={() => setFilterType(filterType === 'low-stock' ? 'all' : 'low-stock')}
-            className="px-3 py-1.5 bg-amber-200 hover:bg-amber-300 text-amber-900 rounded-lg text-xs font-bold whitespace-nowrap"
+            className="px-3 py-1.5 bg-amber-200 hover:bg-amber-300 text-amber-900 rounded-lg text-xs font-bold whitespace-nowrap self-start sm:self-auto"
           >
             {filterType === 'low-stock' ? 'Show All Products' : 'Filter Low Stock Items'}
           </button>
@@ -235,7 +235,7 @@ export const ProductsView = ({ setCurrentView }) => {
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           <button
             onClick={() => setFilterType('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${

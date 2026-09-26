@@ -47,7 +47,7 @@ export const InvoiceHistoryView = ({ setCurrentView, setSelectedInvoiceForPrevie
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-3.5 sm:p-6 max-w-7xl mx-auto space-y-5 sm:space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -63,7 +63,7 @@ export const InvoiceHistoryView = ({ setCurrentView, setSelectedInvoiceForPrevie
         <button
           disabled={isExpired}
           onClick={() => setCurrentView('user-create-invoice')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all ${
+          className={`flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all self-start sm:self-auto ${
             isExpired
               ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
               : 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20 hover:shadow'
@@ -108,7 +108,7 @@ export const InvoiceHistoryView = ({ setCurrentView, setSelectedInvoiceForPrevie
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           <button
             onClick={() => setStatusFilter('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${

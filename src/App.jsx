@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/common/Navbar';
 import { Sidebar } from './components/common/Sidebar';
+import { MobileBottomNav } from './components/common/MobileBottomNav';
 import { Toast } from './components/common/Toast';
 
 // Landing & Auth
@@ -34,6 +35,7 @@ import { ShieldAlert, AlertTriangle } from 'lucide-react';
 const MainContent = () => {
   const { currentUser, isAdmin, isUser, isExpired } = useAuth();
   const [currentView, setCurrentView] = useState('landing');
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [selectedInvoiceForPreview, setSelectedInvoiceForPreview] = useState(null);
   const [selectedUserForModal, setSelectedUserForModal] = useState(null);
 
@@ -42,7 +44,12 @@ const MainContent = () => {
   if (isTryingToAccessAdmin && !isAdmin) {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col">
-        <Navbar currentView={currentView} setCurrentView={setCurrentView} />
+        <Navbar
+          currentView={currentView}
+          setCurrentView={setCurrentView}
+          mobileNavOpen={mobileNavOpen}
+          setMobileNavOpen={setMobileNavOpen}
+        />
         <div className="flex-1 flex items-center justify-center p-6">
           <div className="bg-white p-8 rounded-2xl mat-shadow-md border border-rose-200 max-w-md w-full text-center">
             <div className="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto mb-4">
@@ -68,7 +75,12 @@ const MainContent = () => {
   if (currentView === 'landing') {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col">
-        <Navbar currentView={currentView} setCurrentView={setCurrentView} />
+        <Navbar
+          currentView={currentView}
+          setCurrentView={setCurrentView}
+          mobileNavOpen={mobileNavOpen}
+          setMobileNavOpen={setMobileNavOpen}
+        />
         <LandingPage setCurrentView={setCurrentView} />
         <Toast />
       </div>
@@ -78,7 +90,12 @@ const MainContent = () => {
   if (currentView === 'login') {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col">
-        <Navbar currentView={currentView} setCurrentView={setCurrentView} />
+        <Navbar
+          currentView={currentView}
+          setCurrentView={setCurrentView}
+          mobileNavOpen={mobileNavOpen}
+          setMobileNavOpen={setMobileNavOpen}
+        />
         <LoginPage setCurrentView={setCurrentView} />
         <Toast />
       </div>
@@ -88,14 +105,24 @@ const MainContent = () => {
   // Dashboard Layout (Sidebar + Main Content)
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Navbar currentView={currentView} setCurrentView={setCurrentView} />
+      <Navbar
+        currentView={currentView}
+        setCurrentView={setCurrentView}
+        mobileNavOpen={mobileNavOpen}
+        setMobileNavOpen={setMobileNavOpen}
+      />
 
       <div className="flex-1 flex overflow-hidden">
         {/* Responsive Sidebar */}
-        <Sidebar currentView={currentView} setCurrentView={setCurrentView} />
+        <Sidebar
+          currentView={currentView}
+          setCurrentView={setCurrentView}
+          mobileNavOpen={mobileNavOpen}
+          setMobileNavOpen={setMobileNavOpen}
+        />
 
         {/* Dynamic Main Workspace */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto w-full min-w-0 pb-16 lg:pb-0">
           {/* Admin Routes */}
           {currentView === 'admin-dashboard' && (
             <AdminDashboard
@@ -162,6 +189,14 @@ const MainContent = () => {
           )}
         </main>
       </div>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <MobileBottomNav
+        currentView={currentView}
+        setCurrentView={setCurrentView}
+        mobileNavOpen={mobileNavOpen}
+        setMobileNavOpen={setMobileNavOpen}
+      />
 
       {/* Global Invoice Preview / PDF Download Modal */}
       {selectedInvoiceForPreview && (

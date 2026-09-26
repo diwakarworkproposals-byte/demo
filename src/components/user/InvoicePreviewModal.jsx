@@ -91,9 +91,9 @@ export const InvoicePreviewModal = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-2 sm:p-4 overflow-y-auto">
       <div className="bg-white rounded-2xl max-w-4xl w-full my-8 mat-shadow-lg border border-slate-200 overflow-hidden flex flex-col max-h-[95vh]">
         {/* Top Control Toolbar */}
-        <div className="bg-slate-900 text-white px-6 py-3.5 flex items-center justify-between shrink-0 no-print">
+        <div className="bg-slate-900 text-white px-3 sm:px-6 py-2.5 sm:py-3.5 flex flex-wrap items-center justify-between gap-2 shrink-0 no-print">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-sm">
+            <span className="font-bold text-xs sm:text-sm">
               {isDraft ? 'Invoice Preview & Validation' : `Tax Invoice: ${invoice.invoiceNumber}`}
             </span>
             {isDraft && (
@@ -103,46 +103,46 @@ export const InvoicePreviewModal = ({
             )}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {isDraft && onEdit && (
               <button
                 onClick={onEdit}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1 transition-colors"
               >
                 <Edit className="w-3.5 h-3.5" />
-                <span>Edit Invoice</span>
+                <span className="hidden sm:inline">Edit</span>
               </button>
             )}
 
             <button
               onClick={handlePrint}
-              className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1 transition-colors"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>Print</span>
+              <span className="hidden sm:inline">Print</span>
             </button>
 
             <button
               onClick={handleDownloadPdf}
-              className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
+              className="px-3 sm:px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download PDF</span>
+              <span>PDF</span>
             </button>
 
             {isDraft && onGenerate && (
               <button
                 onClick={onGenerate}
-                className="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
+                className="px-3 sm:px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
               >
                 <FileCheck className="w-3.5 h-3.5" />
-                <span>Generate Invoice</span>
+                <span>Save</span>
               </button>
             )}
 
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-2"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-1"
             >
               <X className="w-5 h-5" />
             </button>
@@ -150,11 +150,11 @@ export const InvoicePreviewModal = ({
         </div>
 
         {/* Printable Invoice Container */}
-        <div className="overflow-y-auto p-4 sm:p-8 bg-slate-100 flex-1">
+        <div className="overflow-auto p-2 sm:p-8 bg-slate-100 flex-1">
           <div
             id="printable-invoice"
             ref={invoiceRef}
-            className="bg-white p-8 max-w-3xl mx-auto shadow-sm border border-slate-200 text-slate-900 font-sans"
+            className="bg-white p-4 sm:p-8 max-w-3xl mx-auto shadow-sm border border-slate-200 text-slate-900 font-sans min-w-[500px] sm:min-w-0"
             style={{ minHeight: '1050px' }}
           >
             {/* Header: ASAN BILL + Business Information */}

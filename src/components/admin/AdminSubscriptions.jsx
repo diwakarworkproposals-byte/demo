@@ -24,7 +24,7 @@ export const AdminSubscriptions = () => {
   const totalGst = totalBase * 0.18;
 
   return (
-    <div className="p-6 max-w-7xl mx-auto space-y-6">
+    <div className="p-3.5 sm:p-6 max-w-7xl mx-auto space-y-5 sm:space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
           <CreditCard className="w-6 h-6 text-blue-600" />
